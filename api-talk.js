@@ -30,6 +30,12 @@ function getDMWithStopID(stopid) {
                 case "SuburbanRailway":
                     mot = "<i class='fa-solid fa-train-subway' title='SuburbanRailway'></i>";
                     break;
+                case "Train":
+                    mot = "<i class='fa-solid fa-train' title='Train'></i>";
+                    break;
+                case "IntercityBus":
+                    mot = "<i class='fa-solid fa-bus' title='IntercityBus'></i>";
+                    break;
                 default:
             }
 
