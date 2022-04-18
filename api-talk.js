@@ -4,16 +4,25 @@ function getDMWithStopID(stopid) {
     function buildTableBodyHTML(responseText) {
         let body = "";
         responseText["Departures"].forEach(e => {
+            let departuretime;
+            if (e.hasOwnProperty("RealTime")) {
+                departuretime = e["RealTime"];
+            } else {
+                departuretime = e["ScheduledTime"];
+            }
             body += "<tr>";
             body += "<td>" + e["Mot"] + "</td>";
+            body += "<td>" + e["LineName"] + "</td>";
             body += "<td>" + e["Direction"] + "</td>";
-            body += "<td>" + parseInt((new Date(parseInt(e["RealTime"].substr(6)))-Date.now())/100000) + "</td>";
+            body += "<td>" + parseInt((new Date(parseInt(departuretime.substr(6)))-Date.now())/100000) + "</td>";
             body += "</tr>";
         });
         return body;
     }
 
     function onload() {
+        document.getElementById("debug").innerHTML = xhr.responseText;
+        document.getElementById("output").innerHTML = "";
         let tablebody = buildTableBodyHTML(JSON.parse(xhr.responseText));
         document.getElementById("output").innerHTML = tablebody;
     }
