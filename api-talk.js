@@ -18,7 +18,7 @@ function getDMWithStopID(stopid) {
             body += "<td>" + e["Mot"] + "</td>";
             body += "<td>" + e["LineName"] + "</td>";
             body += "<td>" + e["Direction"] + "</td>";
-            body += "<td>" + parseInt((new Date(parseInt(departuretime.substr(6)))-Date.now())/100000) + "</td>";
+            body += "<td>" + Math.ceil((new Date(parseInt(departuretime.substr(6)))-Date.now())/100000) + "</td>";
             body += "</tr>";
         });
         return body;
