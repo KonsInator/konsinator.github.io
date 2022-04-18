@@ -1,3 +1,7 @@
+function debug(debugText) {
+    document.getElementById("debug").innerHTML = debugText;
+}
+
 function getDMWithStopID(stopid) {
     let xhr = new XMLHttpRequest();
 
@@ -21,7 +25,6 @@ function getDMWithStopID(stopid) {
     }
 
     function onload() {
-        document.getElementById("debug").innerHTML = xhr.responseText;
         document.getElementById("output").innerHTML = "";
         let tablebody = buildTableBodyHTML(JSON.parse(xhr.responseText));
         document.getElementById("output").innerHTML = tablebody;
@@ -78,5 +81,3 @@ function queryByNameIdeome(ideome) {
 
     xhr.send(JSONQuery);
 }
-
-//queryByNameIdeome("Zelle");
