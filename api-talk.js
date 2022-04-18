@@ -9,13 +9,26 @@ function getDMWithStopID(stopid) {
         let body = "";
         responseText["Departures"].forEach(e => {
             let departuretime;
+
             if (e.hasOwnProperty("RealTime")) {
                 departuretime = e["RealTime"];
             } else {
                 departuretime = e["ScheduledTime"];
             }
+
+            let mot = e["Mot"];
+            switch(mot) {
+                case "CityBus":
+                    mot = "<i class='fa-solid fa-bus'></i>";
+                    break;
+                case "Tram":
+                    mot = "<i class='fa-solid fa-train-tram'></i>";
+                    break;
+                default:
+            }
+
             body += "<tr>";
-            body += "<td>" + e["Mot"] + "</td>";
+            body += "<td>" + mot + "</td>";
             body += "<td>" + e["LineName"] + "</td>";
             body += "<td>" + e["Direction"] + "</td>";
             body += "<td>" + Math.ceil((new Date(parseInt(departuretime.substr(6)))-Date.now())/100000) + "</td>";
