@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://kit.fontawesome.com/6759feee2b.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="stylesheet.css">
-    </head>
+
+<head>
+    <script src="https://kit.fontawesome.com/6759feee2b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
 <body>
 
-<input type="text" id="queryfield" onchange="evaluateQuery()">
+    <input type="text" id="queryfield" onchange="evaluateQuery()">
 
-<p id="debug"></p>
+    <p id="debug"></p>
 
-<button onclick="queryByNameIdeome('Zellescher Weg')">Zellescher Weg</button>
-<button onclick="queryByNameIdeome('Nürnberger Platz')">N&uuml;rnberger Platz</button>
+    <div id="buttons">
+        <button onclick="queryByNameIdeome('Zellescher Weg')">Zellescher Weg</button>
+        <button onclick="queryByNameIdeome('Nürnberger Platz')">N&uuml;rnberger Platz</button>
+    </div>
 
-<p id="station"></p>
-<table>
-    <thead>
-        <tr>
-            <th></th>
-            <th>Nummer</th>
-            <th>Richtung</th>
-            <th>in ... Minuten</th>
-        </tr>    
-    </thead>
-    <tbody id="output">
+    <div id="out">
+        
+        <p id="station"></p>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nummer</th>
+                    <th>Richtung</th>
+                    <th>in ... Minuten</th>
+                </tr>
+            </thead>
+            <tbody id="output">
 
-    </tbody>
+            </tbody>
 
-</table>
+        </table>
+    </div>
 
-<script src="api-talk.js"></script>
-<script>
-    function evaluateQuery() {
-        queryByNameIdeome(document.getElementById("queryfield").value);
-    }
-</script>
+    <script src="api-talk.js"></script>
+    <script>
+        function evaluateQuery() {
+            queryByNameIdeome(document.getElementById("queryfield").value);
+        }
+    </script>
 
 </body>
+
 </html>
