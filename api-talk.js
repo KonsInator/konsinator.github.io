@@ -19,10 +19,16 @@ function getDMWithStopID(stopid) {
             let mot = e["Mot"];
             switch(mot) {
                 case "CityBus":
-                    mot = "<i class='fa-solid fa-bus'></i>";
+                    mot = "<i class='fa-solid fa-bus' title='CityBus'></i>";
                     break;
                 case "Tram":
-                    mot = "<i class='fa-solid fa-train-tram'></i>";
+                    mot = "<i class='fa-solid fa-train-tram' title='Tram'></i>";
+                    break;
+                case "PlusBus":
+                    mot = "<i class='fa-solid fa-bus' title='PlusBus'></i>";
+                    break;
+                case "SuburbanRailway":
+                    mot = "<i class='fa-solid fa-train-subway' title='SuburbanRailway'></i>";
                     break;
                 default:
             }
