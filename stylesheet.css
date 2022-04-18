@@ -44,12 +44,15 @@ button {
 
     background-color: rgb(255, 255, 0);
     color: #000;
+    border: 0px;
+
+    margin-right: 5px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #aaa;
+    border: 0px;
 }
 
 th {
