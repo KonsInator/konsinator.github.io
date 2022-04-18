@@ -1,0 +1,73 @@
+function getDMWithStopID(stopid) {
+    let xhr = new XMLHttpRequest();
+
+    function buildTableBodyHTML(responseText) {
+        let body = "";
+        responseText["Departures"].forEach(e => {
+            body += "<tr>";
+            body += "<td>" + e["Mot"] + "</td>";
+            body += "<td>" + e["Direction"] + "</td>";
+            body += "<td>" + parseInt((new Date(parseInt(e["RealTime"].substr(6)))-Date.now())/100000) + "</td>";
+            body += "</tr>";
+        });
+        return body;
+    }
+
+    function onload() {
+        let tablebody = buildTableBodyHTML(JSON.parse(xhr.responseText));
+        document.getElementById("output").innerHTML = tablebody;
+    }
+
+    function setUpXHR(URL) {
+        xhr.open("POST", URL);
+
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+        xhr.onload = onload;
+    }
+
+    setUpXHR("https://webapi.vvo-online.de/dm");
+
+    let JSONQuery = `{
+        "stopid": ` + stopid + `,
+        "limit": 8
+    }`;
+
+    xhr.send(JSONQuery);
+}
+
+function queryByNameIdeome(ideome) {
+    let xhr = new XMLHttpRequest();
+
+    function onload() {
+        let response = JSON.parse(xhr.responseText);
+        let points = response["Points"];
+        let stop = points[0].split("|");
+        let stopName = stop[3];
+        let stopID = stop[0];
+        document.getElementById("station").innerHTML = stopName;
+        getDMWithStopID(stopID);
+    }
+
+    function setUpXHR(URL) {
+        xhr.open("POST", URL);
+
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    
+        xhr.onload = onload;
+    }
+
+    setUpXHR("https://webapi.vvo-online.de/tr/pointfinder");
+
+    let JSONQuery = `{
+        "query":` + ideome + `,
+        "stopsOnly": true,
+        "regionalOnly": true
+    }`
+
+    xhr.send(JSONQuery);
+}
+
+//queryByNameIdeome("Zelle");

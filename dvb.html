@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input type="text" id="queryfield" onchange="evaluateQuery()">
+
+<p id="station"></p>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Richtung</th>
+            <th>in ... Minuten</th>
+        </tr>    
+    </thead>
+    <tbody id="output">
+
+    </tbody>
+
+</table>
+
+<script src="api-talk.js"></script>
+<script>
+    function evaluateQuery() {
+        queryByNameIdeome(document.getElementById("queryfield").value);
+    }
+</script>
+
+</body>
+</html>
