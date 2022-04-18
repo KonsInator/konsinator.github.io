@@ -1,7 +1,7 @@
 body {
     background-color: #555;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: medium;
+    font-size: x-large;
 }
 
 #queryfield {
@@ -12,6 +12,7 @@ body {
     padding: 4px 8px;
     background-color: rgb(61, 61, 61);
     color: #fff;
+    font-size: x-large;
 }
 
 #out {
@@ -38,6 +39,8 @@ button {
     cursor: pointer;
     width: 100%;
     padding: 4px 8px;
+
+    font-size: x-large;
 
     background-color: rgb(255, 255, 0);
     color: #000;
