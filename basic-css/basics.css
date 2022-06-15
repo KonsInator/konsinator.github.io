@@ -7,17 +7,22 @@
 
     --basic-margin: 4px;
     --basic-padding: 6px;
+    --basic-text-padding: 6px 10px;
     --basic-border-radius: 6px;
+
+    --basic-font-size: 16;
 }
 
 body {
     background-color: var(--basic-bg-color);
     font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--basic-font-size);
 }
 
 button {
-    padding: var(--basic-padding);
+    padding: var(--basic-text-padding);
     margin: var(--basic-margin);
+    font-size: var(--basic-font-size);
 }
 
 button {
